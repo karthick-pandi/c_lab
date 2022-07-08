@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import {useState} from "react";
+import { Pop } from "./component/Pop";
+import "./App.css"
+import {Nav} from "./component/Nav"
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false);
+ 
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  }
+ 
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <div> <div >{isOpen ? null: <Nav></Nav> }</div>
+    <div className="container" >
+      <div>
+      
+       <button  onClick={()=>togglePopup()}>save segment</button>
+       </div>
+       <div>{isOpen ? <Pop></Pop> : null }</div>
+    </div></div>
   );
 }
 
